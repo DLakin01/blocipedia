@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   after_create :welcome_email
 
+  has_many :wikis
+
   # Validations for name
   validates :name, presence: true, length: { minimum: 1, maximum: 100 }
 
