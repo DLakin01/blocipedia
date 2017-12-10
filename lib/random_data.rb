@@ -38,4 +38,13 @@ module RandomData
     lorem_ipsum.shuffle!
     lorem_ipsum[rand(0..49)]
   end
+
+  def self.random_image
+    img_array = ['bootstrap.jpeg', 'bridge.jpg', 'camera.jpeg', 'campfire.jpg', 'car.jpeg',
+      'cat.jpeg', 'chess.jpeg', 'couple.jpeg', 'jellyfish.jpeg', 'monkey.jpg', 'moth.jpg',
+      'pupper.jpeg', 'skylight.jpg', 'snowy-mountains.jpeg', 'tulips.jpg', 'watch.jpeg',
+      'windsurf.jpeg']
+    img_array.shuffle!
+    img_array[rand(0..16)]
+  end
 end

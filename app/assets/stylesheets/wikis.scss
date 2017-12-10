@@ -1,3 +1,19 @@
 // Place all the styles related to the Wikis controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.wiki-image {
+  width: 80%;
+  height: auto;
+}
+
+/* Centered text */
+.wiki-text {
+  font-family: 'Libre Franklin', serif;
+  font-size: 3em;
+  position: relative;
+  left: 10%;
+  bottom: 260px;
+  color: white;
+}

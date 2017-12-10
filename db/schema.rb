@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171208131900) do
+ActiveRecord::Schema.define(version: 20171209204327) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20171208131900) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "file"
     t.index ["user_id"], name: "index_wikis_on_user_id"
   end
 

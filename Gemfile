@@ -39,6 +39,8 @@ source 'https://rubygems.org'
  gem 'bootstrap-sass'
  # Use Bootstrap Forms as a Rails form builder
  gem 'bootstrap_form'
+ # Use Paperclip as an image and file manager
+ gem "paperclip", "~> 5.0.0"
 
  group :development, :test do
    # Call 'byebug' anywhere in the code to stop execution and get a debugger console
