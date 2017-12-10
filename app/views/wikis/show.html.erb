@@ -5,7 +5,11 @@
     <p><%= @wiki.body %></p>
   </div>
   <div class="col-md-4">
-    <%= image_tag("#{@wiki.file}", class: 'wiki-image') %>
+    <% unless @wiki.image.exists? %>
+      <%= image_tag("#{@wiki.file}", class: 'wiki-image') %>
+    <% else %>
+      <%= image_tag(@wiki.image.url, class: 'wiki-image') %>
+    <% end %>
   </div>
 </div>
 

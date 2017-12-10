@@ -5,8 +5,13 @@
   <div class="col-md-8 col-md-offset-1 col-sm-4">
     <% @wikis.each do |wiki| %>
       <div class="media">
-        <%= link_to image_tag("#{wiki.file}", class: 'wiki-image'), wiki %>
-        <h4 class="wiki-text"><%= "#{wiki.title}" %></h4>
+        <% unless wiki.image.exists? %>
+          <%= link_to image_tag("#{wiki.file}", class: 'wiki-image'), wiki %>
+          <h4 class="wiki-text"><%= "#{wiki.title}" %></h4>
+        <% else %>
+          <%= link_to image_tag(wiki.image.url, class: 'wiki-image'), wiki %>
+          <h4 class="wiki-text"><%= "#{wiki.title}" %></h4>
+        <% end %>
       </div>
     <% end %>
   </div>

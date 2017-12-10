@@ -13,7 +13,12 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = Wiki.new( wiki_params )
+    @wiki = Wiki.new
+    @wiki.title = params[:wiki][:title]
+    @wiki.body = params[:wiki][:body]
+    @wiki.user_id = current_user.id
+    @wiki.private = params[:wiki][:private]
+    @wiki.image = params[:wiki][:image]
 
     if @wiki.save
       flash[:notice] = "Your wiki has been added to Blocipedia"
@@ -32,6 +37,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.image = params[:wiki][:image]
 
     if @wiki.update_attributes(wiki_params)
       flash[:notice] = "Wiki was updated!"
@@ -56,6 +62,6 @@ class WikisController < ApplicationController
   private
   # expect these 4 attriubtes
     def wiki_params
-      params.require(:wiki).permit(:title, :body, :private, :user)
+      params.require(:wiki).permit(:title, :body, :private, :user_id, :image)
     end
 end
