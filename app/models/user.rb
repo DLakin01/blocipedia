@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  after_initialize { self.role ||= :standard}
   after_create :welcome_email
 
   has_many :wikis
@@ -19,6 +20,8 @@ class User < ApplicationRecord
             presence: true,
             uniqueness: { case_sensitive: false },
             length: { minimum: 6, maximum: 254 }
+
+  enum role: [:standard, :premium, :admin]
 
 def avatar_url(size)
   gravatar_id = Digest::MD5::hexdigest(self.email).downcase

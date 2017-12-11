@@ -1,2 +1,10 @@
-<h1>Wikis#edit</h1>
-<p>Find me in app/views/wikis/edit.html.erb</p>
+<div class="row">
+  <div class="col-md-8">
+    <%= bootstrap_form_for @wiki do |f| %>
+      <%= f.text_field :title, autofocus: true %>
+      <%= f.text_area :body, rows: "10" %>
+      <%= f.check_box :public %>
+      <%= f.submit "Submit", class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>

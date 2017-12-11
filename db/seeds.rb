@@ -17,7 +17,7 @@ users = User.all
     body: RandomData.random_paragraph,
     user: users.sample,
     file: RandomData.random_image,
-    private: false
+    public: true
   )
 end
 wikis = Wiki.all

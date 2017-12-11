@@ -6,11 +6,15 @@
     <% @wikis.each do |wiki| %>
       <div class="media">
         <% unless wiki.image.exists? %>
-          <%= link_to image_tag("#{wiki.file}", class: 'wiki-image'), wiki %>
-          <h4 class="wiki-text"><%= "#{wiki.title}" %></h4>
+          <%= link_to wiki do %>
+            <%= image_tag("#{wiki.file}", class: 'wiki-image') %>
+            <h4 class="wiki-text"><%= "#{wiki.title}" %></h4>
+          <% end %>
         <% else %>
-          <%= link_to image_tag(wiki.image.url, class: 'wiki-image'), wiki %>
-          <h4 class="wiki-text"><%= "#{wiki.title}" %></h4>
+          <%= link_to wiki do %>
+            <%= image_tag(wiki.image.url, class: 'wiki-image') %>
+            <h4 class="wiki-text"><%= "#{wiki.title}" %></h4>
+          <% end %>
         <% end %>
       </div>
     <% end %>

@@ -12,8 +12,9 @@
   <div class="col-md-8">
     <%= bootstrap_form_for @wiki do |f| %>
       <%= f.text_field :title, autofocus: true %>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, rows: "10" %>
       <%= f.file_field :image %>
+      <%= f.check_box :public %>
       <%= f.submit "Submit", class: "btn btn-primary" %>
     <% end %>
   </div>

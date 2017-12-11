@@ -41,6 +41,8 @@ source 'https://rubygems.org'
  gem 'bootstrap_form'
  # Use Paperclip as an image and file manager
  gem "paperclip", "~> 5.0.0"
+ # Use Pundit as a permissions manager
+ gem "pundit"
 
  group :development, :test do
    # Call 'byebug' anywhere in the code to stop execution and get a debugger console
