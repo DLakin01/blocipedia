@@ -47,6 +47,8 @@ source 'https://rubygems.org'
  gem "stripe"
  # Use Figaro to safely store environment variables
  gem "figaro"
+ # Use RedCarpet for markdown parsing and editing
+ gem "redcarpet"
 
  group :development, :test do
    # Call 'byebug' anywhere in the code to stop execution and get a debugger console
