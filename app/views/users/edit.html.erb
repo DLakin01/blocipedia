@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="media">
+      <%= bootstrap_form_for @user do |f| %>
+        <%= f.text_area :bio, autofocus: true, placeholder: "Tell us about yourself!", rows: '8' %>
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <% if current_user.premium? || current_user.admin? %>
+      <div class="container content">
+      	<div class="pricing hover-effect">
+      		<div class="pricing-head">
+      			<h3>Standard
+            <span>Free and open access to Blocipedia</span>
+      			</h3>
+      			<h4>Free!</h4>
+      		</div>
+      		<ul class="pricing-content list-unstyled">
+      			<li>Create public wikis</li>
+      			<li>Edit alongside other Blocipedians</li>
+      			<li>Customize your user profile</li>
+      			<li>Keep up with the Joneses</li>
+      		</ul>
+      		<div class="pricing-footer">
+      			<p>Tired of paying me an exorbitant sum? Downgrade today!</p>
+      			<%= link_to "Downgrade", downgrade_path, class: "btn btn-danger" %>
+      		</div>
+      	</div>
+  		</div>
+    <% end %>
+    <% if current_user.standard? %>
+      <div class="container content">
+        <div class="pricing hover-effect">
+        	<div class="pricing-head">
+        		<h3>Premium
+            <span>Privacy and collaboration await!</span>
+        		</h3>
+        		<h4><i>$</i>14<i>.99</i>
+        		<span>Per Month</span>
+        		</h4>
+        	</div>
+        	<ul class="pricing-content list-unstyled">
+        		<li>Create private wikis that cannot be seen by standard users</li>
+            <li>Invite your friends to share your private pages</li>
+        		<li>Premium support from the Blocipedia team</li>
+            <li>A free dog!</li>
+            <li>Power like unto a god</li>
+        	</ul>
+          <div class="pricing-footer">
+        		<p>Want access to the best of Blocipedia? Upgrade today!</p>
+        		<%= link_to "Upgrade", new_charge_path, class: 'btn btn-success' %>
+        	</div>
+         </div>
+    	 </div>
+      <% end %>
+   </div>
+ </div>
+
+
+<br>
+<br>
+<center>
+<strong>Powered by <a href="http://j.mp/metronictheme" target="_blank">KeenThemes</a></strong>
+</center>
+<br>
+<br>

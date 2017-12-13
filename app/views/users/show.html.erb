@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-8">
+    <div class="media">
+      <br />
+      <% avatar_url = @user.avatar_url(128) %>
+      <% if avatar_url %>
+        <div class="media-left">
+          <%= image_tag avatar_url, class: 'media-object' %>
+        </div>
+      <% end %>
+      <div class="media-body">
+        <h2 class="media-heading"><%= @user.name %></h2>
+        <small>
+          Currently a <strong><%= @user.role %></strong> member of Blocipedia.
+          <br>
+          <br>
+          <%= pluralize(@user.wikis.count, 'wiki') %>
+        <small>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2">
+    <br><br>
+    <%= link_to "Profile Settings", edit_user_path, class: "btn btn-success" %>
+  </div>
+</div>
+<br><br>
+<div class="row">
+  <div class="col-md-8">
+    <article class="media">
+      <h3 class="media-heading">Email</h3>
+      <p class="info"><%= @user.email %></p>
+
+      <br>
+
+      <h3 class="media-heading">Bio</h3>
+      <p class="info">Personalize your bio, and tell the Blocpedia community a bit about you!</p>
+    </article>
+  </div>
+</div>

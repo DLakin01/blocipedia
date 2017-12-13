@@ -43,6 +43,10 @@ source 'https://rubygems.org'
  gem "paperclip", "~> 5.0.0"
  # Use Pundit as a permissions manager
  gem "pundit"
+ # Use Stripe for user payments
+ gem "stripe"
+ # Use Figaro to safely store environment variables
+ gem "figaro"
 
  group :development, :test do
    # Call 'byebug' anywhere in the code to stop execution and get a debugger console

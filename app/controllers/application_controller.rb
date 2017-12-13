@@ -6,6 +6,23 @@ class ApplicationController < ActionController::Base
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  def modify_role (user)
+
+    @user = User.find(user.id)
+    if @user.role == 'standard'
+      @user.assign_attributes(role: 1)
+    elsif @user.role == 'premium'
+      @user.assign_attributes(role: 0)
+    end
+
+    if @user.save
+      flash[:notice] = "Your role and permissions have been updated."
+      redirect_to @user
+    else
+      flash.now[:alert] = "Your role and permissions could not be updated. Please try again."
+    end
+  end
+
   private
 
   def configure_permitted_parameters
