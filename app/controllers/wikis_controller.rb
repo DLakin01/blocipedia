@@ -14,7 +14,12 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = Wiki.new(wiki_params)
+    @wiki = Wiki.new
+    @wiki.title = params[:wiki][:title]
+    @wiki.body = params[:wiki][:body]
+    @wiki.image = params[:wiki][:image]
+    @wiki.user_id = current_user.id
+    @wiki.public = true
 
     if @wiki.save
       flash[:notice] = "Your wiki has been added to Blocipedia"
@@ -27,6 +32,7 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @user = current_user
   end
 
   def update
@@ -56,9 +62,26 @@ class WikisController < ApplicationController
     end
   end
 
+  def modify_privacy
+    @wiki = Wiki.find(params[:id])
+    if @wiki.public == true
+      @wiki.public = false
+    else
+      @wiki.public = true
+    end
+
+    if @wiki.save
+      flash[:notice] = "The privacy status of \"#{@wiki.title}\" was modified."
+      redirect_to @wiki
+    else
+      flash.now[:alert] = "Your wiki's privacy could not be changed. Please try again."
+      render :edit
+    end
+  end
+
   private
   # expect these 4 attriubtes
     def wiki_params
-      params.require(:wiki).permit(:title, :body, :public, :user_id, :image)
+      params.require(:wiki).permit(:title, :body, :user_id, :public, :image)
     end
 end

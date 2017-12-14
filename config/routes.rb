@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
 
-  get 'downgrade' => 'charges#downgrade'
+  devise_for :users
+
+  resources :wikis
 
   resources :users, only: [:show, :edit, :update]
 
   resources :charges, only: [:new, :create]
 
-  resources :wikis
+  get 'downgrade' => 'charges#downgrade'
 
-  devise_for :users
+  get 'modify_privacy' => 'wikis#modify_privacy'
 
   get 'about' => 'welcome#about'
 

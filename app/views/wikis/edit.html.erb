@@ -5,8 +5,17 @@
     <%= bootstrap_form_for @wiki do |f| %>
       <%= f.text_field :title, autofocus: true %>
       <%= f.text_area :body, rows: "10" %>
-      <%= f.check_box :public %>
       <%= f.submit "Submit", class: 'btn btn-primary' %>
+    <% end %>
+    <% unless @wiki.public = false %>
+      <% if @user.admin? || (@user.premium? && @user.id == @wiki.user_id) %>
+        <br>
+        <p><strong>Would you like to make your wiki private, and shut out the peons?</strong></p>
+        <%= link_to "Private Wiki", modify_privacy_path(id: @wiki.id), class: "btn btn-primary" %>
+      <% end %>
+    <% else %>
+      <p><strong>Would you like to make your wiki public again?</strong></p>
+      <%= link_to "Public Wiki", modify_privacy_path(id: @wiki.id), class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
