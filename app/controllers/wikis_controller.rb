@@ -1,7 +1,7 @@
 class WikisController < ApplicationController
 
   def index
-    @wikis = Wiki.all
+    @wikis = policy_scope(Wiki)
   end
 
   def show
@@ -40,7 +40,6 @@ class WikisController < ApplicationController
     authorize @wiki
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
-    @wiki.image = params[:wiki][:image]
 
     if @wiki.update_attributes(wiki_params)
       flash[:notice] = "Wiki was updated!"

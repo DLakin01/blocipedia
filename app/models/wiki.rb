@@ -1,5 +1,6 @@
 class Wiki < ApplicationRecord
-  belongs_to :user
+  has_many :collaborators
+  has_many :users, through: :collaborators
   has_attached_file :image,
     :path => ":rails_root/public/images/:id/:style/:filename",
     :url => "/images/:id/:style/:filename",

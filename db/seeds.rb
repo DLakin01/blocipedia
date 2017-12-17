@@ -11,11 +11,11 @@ end
 users = User.all
 
 # Create Wikis
-10.times do
+20.times do
   Wiki.create!(
     title: "#{RandomData.random_word.capitalize} #{RandomData.random_word}",
     body: RandomData.random_paragraph,
-    user: users.sample,
+    user_id: users.ids.sample,
     file: RandomData.random_image,
     public: true
   )

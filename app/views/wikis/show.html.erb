@@ -3,6 +3,17 @@
 <div class="row">
   <div class="col-md-6">
     <p><%= markdown(@wiki.body) %></p>
+    <% if @wiki.collaborators.exists? %>
+      <h5><i>Collaborators:</i></h5>
+      <%= @wiki.collaborators.each do |c| %>
+        <p>
+          <%= c.user.name %>
+          <% if @wiki.user_id == current_user.id %>
+            <%= link_to "", collaborator_path(c.id), method: :delete, class: 'glyphicon glyphicon-remove' %>
+          <% end %>
+        </p>
+      <% end %>
+    <% end %>
   </div>
   <div class="col-md-4">
     <% unless @wiki.image.exists? %>
