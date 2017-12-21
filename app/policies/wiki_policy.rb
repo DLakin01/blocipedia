@@ -5,7 +5,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def update?
-    @wiki.public? || @wiki.user_id == @user.id || @wiki.users.include?(@user)
+    @wiki.public? && @user || @wiki.user_id == @user.id || @wiki.users.include?(@user)
   end
 
   class Scope
@@ -41,7 +41,7 @@ class WikiPolicy < ApplicationPolicy
         all_wikis = scope.all
         wikis = []
         all_wikis.each do |wiki|
-          if wiki.public? 
+          if wiki.public?
             wikis << wiki
           end
         end
