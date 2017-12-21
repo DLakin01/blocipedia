@@ -33,10 +33,6 @@ class WikisController < ApplicationController
   def edit
     @wiki = Wiki.find(params[:id])
     @user = current_user
-
-    if @user.nil?
-      flash.now[:alert] = "You must be signed in to do that."
-    end  
   end
 
   def update

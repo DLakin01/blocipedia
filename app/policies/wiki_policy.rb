@@ -5,7 +5,11 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def update?
-    @wiki.public? || @wiki.user_id == @user.id || @wiki.users.include?(@user)
+    (@wiki.public? && @user) || (@user && @wiki.user_id == @user.id) || (@user && @wiki.users.include?(@user))
+  end
+
+  def delete?
+    (@wiki.public? && @user) || (@user && @wiki.user_id == @user.id) || (@user && @wiki.users.include?(@user))
   end
 
   class Scope

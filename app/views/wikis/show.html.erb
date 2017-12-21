@@ -29,6 +29,8 @@
     <% if policy(@wiki).update? %>
       <%= link_to "Edit Wiki", edit_wiki_path, class: "btn btn-primary" %>
     <% end %>
-    <%= link_to "Delete Wiki", @wiki, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to delete this Wiki?" } %>
+    <% if policy(@wiki).delete? %>
+      <%= link_to "Delete Wiki", @wiki, method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure you want to delete this Wiki?" } %>
+    <% end %>  
   </div>
 </div>
